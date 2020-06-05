@@ -307,7 +307,7 @@ class Handlers
             oSession.SaveResponse("c:/cdr/response.txt",true);
             oSession.SaveResponseBody("c:/cdr/responseBody.txt");
         }
-        if(oSession.uriContains("https://gateway.vocabgo.com/Student/Contest/SubmitAnswerAndSave")){
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/Contest/SubmitAnswerAndReturn")){
             oSession.utilDecodeResponse();
             oSession.SaveResponse("c:/cdr/response.txt",true);
             oSession.SaveResponseBody("c:/cdr/responseBody.txt");
