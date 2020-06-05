@@ -3,6 +3,7 @@ import time
 import os
 answ = open('.\\answer.txt','r', encoding='utf-8')
 answ = answ.read()
+back_j=''
 #a = str(answ).split('}{')
 #print(len(a))
 #gu = eval('{'+a[1]+'}')
@@ -11,10 +12,23 @@ answ = answ.read()
 #    print(key+':'+str(val))
 while True:
     f = open('c:\\cdr\\responseBody.txt', 'r', encoding='utf-8')
-    j = json.load(f)
+    #ooo = open('c:\\cdr\\responseBody.txt', 'r', encoding='utf-8')
+    #print(ooo.read())
+    try:
+        j = json.load(f)
+    except:
+        print("????")
+        break
+    if(back_j==j):
+        time.sleep(0.1)
+        continue
+    else:
+        i = os.system('cls')
+    back_j = j
     #print(j['data']['task_type'])
     #print(j['data'])
     mmp = True
+    opt = []
     if('stem' in j['data']): print('题目：'+j['data']['stem']['content'])
     else: mmp = False
     if 'options' in j['data']:
@@ -22,8 +36,8 @@ while True:
         lenth=len(j['data']['options'])
         for i in range(0,lenth):
             # print(j['data']['options'][i]['answer'])
-            opt = str(j['data']['options'][i]['content'])
-            print(opt)
+            opt.append(str(j['data']['options'][i]['content']))
+            print(opt[-1])
 
     # 拼短语
     if(mmp and j['data']['stem']['content'][0] == "_"):
@@ -33,6 +47,7 @@ while True:
         fr = x
         while(answ[fr]!="'"):
             fr-=1
+        # nowa = answ[fr+1:x-1].split(" ");
         print("\n\n答案："+answ[fr+1:x])
 
     # 搭配单词
@@ -124,7 +139,5 @@ while True:
 
 
     print("\n\n\n_______________________\n")
-    time.sleep(0.5)
-    #break
-    i = os.system('cls')
+    time.sleep(0.1)
     

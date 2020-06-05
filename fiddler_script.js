@@ -150,14 +150,14 @@ class Handlers
 
     static function OnBeforeRequest(oSession: Session) {
         // Sample Rule: Color ASPX requests in RED
-        // if (oSession.uriContains(".aspx")) {	oSession["ui-color"] = "red";	}
+        // if (oSession.uriContains(".aspx")) { oSession["ui-color"] = "red";   }
 
         // Sample Rule: Flag POSTs to fiddler2.com in italics
-        // if (oSession.HostnameIs("www.fiddler2.com") && oSession.HTTPMethodIs("POST")) {	oSession["ui-italic"] = "yup";	}
+        // if (oSession.HostnameIs("www.fiddler2.com") && oSession.HTTPMethodIs("POST")) {  oSession["ui-italic"] = "yup";  }
 
         // Sample Rule: Break requests for URLs containing "/sandbox/"
         // if (oSession.uriContains("/sandbox/")) {
-        //     oSession.oFlags["x-breakrequest"] = "yup";	// Existence of the x-breakrequest flag creates a breakpoint; the "yup" value is unimportant.
+        //     oSession.oFlags["x-breakrequest"] = "yup";   // Existence of the x-breakrequest flag creates a breakpoint; the "yup" value is unimportant.
         // }
 
         if ((null != gs_ReplaceToken) && (oSession.url.indexOf(gs_ReplaceToken)>-1)) {   // Case sensitive
@@ -287,6 +287,11 @@ class Handlers
             oSession.SaveResponse("c:/cdr/response.txt",true);
             oSession.SaveResponseBody("c:/cdr/responseBody.txt");
         }
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/StudyTask/StartAnswer")){
+            oSession.utilDecodeResponse();
+            oSession.SaveResponse("c:/cdr/response.txt",true);
+            oSession.SaveResponseBody("c:/cdr/responseBody.txt");
+        }
         if(oSession.uriContains("https://gateway.vocabgo.com/Student/ClassTask/SubmitAnswerAndSave")){
             oSession.utilDecodeResponse();
             oSession.SaveResponse("c:/cdr/response.txt",true);
@@ -297,7 +302,26 @@ class Handlers
             oSession.SaveResponse("c:/cdr/response.txt",true);
             oSession.SaveResponseBody("c:/cdr/responseBody.txt");
         }
-        
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/ClassTask/StartAnswer")){
+            oSession.utilDecodeResponse();
+            oSession.SaveResponse("c:/cdr/response.txt",true);
+            oSession.SaveResponseBody("c:/cdr/responseBody.txt");
+        }
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/Contest/SubmitAnswerAndSave")){
+            oSession.utilDecodeResponse();
+            oSession.SaveResponse("c:/cdr/response.txt",true);
+            oSession.SaveResponseBody("c:/cdr/responseBody.txt");
+        }
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/Contest/SkipAnswer")){
+            oSession.utilDecodeResponse();
+            oSession.SaveResponse("c:/cdr/response.txt",true);
+            oSession.SaveResponseBody("c:/cdr/responseBody.txt");
+        }
+        if(oSession.uriContains("https://gateway.vocabgo.com/Student/Contest/StartAnswer")){
+            oSession.utilDecodeResponse();
+            oSession.SaveResponse("c:/cdr/response.txt",true);
+            oSession.SaveResponseBody("c:/cdr/responseBody.txt");
+        }
         
         
         
